@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Among Us Impostor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            transform: scaleX(-1);
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .impostor {
+            position: relative;
+            transform: scale(0.3); 
+        }
+
+        .impostor .body {
+            position: relative;
+            width: 300px;
+            height: 420px;
+            overflow: hidden;
+            border-radius: 35% 45% 0 0;
+            border: 30px solid #000;
+        }
+
+        .impostor .body .fill {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #7B0236;
+        }
+
+        .impostor .body .shadow {
+            position: absolute;
+            width: 100%;
+            height: 90%;
+            background: #C70A01;
+            border-radius: 0% 10% 25% 48% / 20% 0% 100% 100%;
+        }
+
+        .impostor .glass-bowl {
+            position: absolute;
+            width: 220px;
+            height: 130px;
+            background: #4A646D;
+            top: 90px;
+            right: -20px;
+            border: 30px solid black;
+            border-radius: 25% 45% 40% 40% / 50%;
+            transform: rotate(-4deg);
+            overflow: hidden;
+        }
+
+        .impostor .glass-bowl .shadow-blue {
+            position: absolute;
+            right: 0;
+            width: 90%;
+            height: 70px;
+            background: #94C9DB;
+            border-radius: 10% 10% 100% 100% / 100% 100% 50% 100%;
+        }
+
+        .impostor .glass-bowl .shadow-white {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            width: 100px;
+            height: 40px;
+            background: white;
+            border-radius: 30% 70% 30% 30% / 30% 70% 30% 60%;
+        }
+
+        .impostor .legs {
+            display: flex;
+            justify-content: space-between;
+            transform: translatey(-30px);
+        }
+
+        .impostor .legs .leg-left {
+            width: 110px;
+            height: 130px;
+            background: #7B0236;
+            border-left: 30px solid #000; 
+            border-bottom: 30px solid #000;
+            border-right: 30px solid #000;
+            border-radius: 0 0 40% 40%
+        }
+
+        .impostor .legs .leg-right {
+            position: relative;
+            width: 90px;
+            height: 105px;
+            background: #7B0236;
+            border-left: 30px solid #000; 
+            border-bottom: 30px solid #000;
+            border-right: 30px solid #000;
+            border-radius: 0 0 40% 40%;
+        }
+
+        .impostor .legs .leg-right:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 100px;
+            height: 30px;
+            background: black;
+            border-radius: 0 0 100% 0
+        }
+
+        .impostor .backpack {
+            position: absolute;
+            height: 280px;
+            width: 90px;
+            background: red;
+            border: 30px solid #000;
+            border-radius: 40% 0 0 40% / 15%;
+            left: -75px;
+            top: 130px;
+            overflow: hidden;
+        }
+
+        .impostor .backpack .shadow {
+            position: absolute;
+            width: 100%;
+            height: 85%;
+            background: #7B0236;
+            bottom: 0;
+            border-radius: 40% 0 0 0 / 10% 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div class="impostor">
+        <div class="floor-shadow"></div>
+        <div class="backpack">
+            <div class="shadow"></div>
+        </div>
+        <div class="body">
+            <div class="fill"></div>
+            <div class="shadow"></div>
+        </div>
+        <div class="glass-bowl">
+            <div class="shadow-blue"></div>
+            <div class="shadow-white"></div>
+        </div>
+        <div class="legs">
+            <div class="leg-left"></div>
+            <div class="leg-right"></div>
+        </div>
+    </div>
+
+    <script>
+        function createStars() {
+            const starContainer = document.querySelector('.stars');
+            for (let i = 150; i--; ) {
+                let star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = `${Math.random() * 4 + 2}px`;
+                star.style.height = star.style.width;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.left = `${Math.random() * 100}vw`;
+                starContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
